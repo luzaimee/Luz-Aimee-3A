@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--Gabriel Ramoss; Luz Aimee-->
+<html lang="pt-br">
+<body>
+<style>
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f3f3f3;
+  font-family: fantasy;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: grey;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.ativo) {
+  background-color: #ddd;
+  border-radius: 3px;
+}
+
+.ativo {
+  color: white;
+  background-color: #4CAF50;
+}
+
+input[type="text"], select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+input[type="email"], select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+input[type="tel"], select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+.container{
+  margin-top: 20px;
+  background-color: #f2f2f2;
+  border: 1px solid #f7f7f7;
+  border-radius: 10px;
+  width: 600px;
+  height: 250px;
+  padding: 20px;
+}
+.botao{
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+</style>
+
+<ul class="menu">
+  <li><a class="ativo" href="recuperação.html">Principal</a></li>
+</ul>
+
+
+<div class="container">
+  <form class="ramosaimee">
+    <div class="input-container">
+      <label for="nome">Nome</label>
+      <input type="text" name="nome" id="nome" required="required" placeholder="Seu Nome">
+      <label for="sobrenome">E-Mail</label>
+      <input type="number" name="email" id="email" required="required">
+      <label for="telefone">Telefone</label>
+      <input type="button" value="Cadastrar" class="botao" id="botao" onclick="salvar()">
+    </div>
+    <div id="mensagem"></div>
+  </form>
+</div>
+<script>
+
+  var nome = document.querySelector('input#nome')
+
+  var email = document.querySelector('input#email')
+
+  var telefone = document.querySelector('input#tel')
+
+  var mensagem = document.getElementById('mensagem')
+
+
+
+function salvar(){
+  if (nome.value.length != 0 && email.value.length != 0 && tel.value.length != 0) {
+    var str = email.value
+    var n = str.search(/@/i);
+    var str2 = telefone.value
+    var n2 = str2.search(/-/i);
+    document.getElementById("email").innerHTML = n;
+    document.getElementById("tel").innerHTML = n2;
+    if (n > 0 && n2 > 0) {
+      mensagem.innerHTML = `<i>Cadastro efetuado!</i>`
+      mensagem.style.color = '#98f59e'
+      window.location.href = "sucesso.html";
+    }else{
+        mensagem.innerHTML = `<i>Preencha os dados corretamente!</i>`
+        mensagem.style.color = '#f55d5d'
+
+      if(nome.value == "") {
+        nome.style.borderColor = "#f55d5d"
+      }
+      if (email.value == "") {
+        email.style.borderColor = "#f55d5d"
+      }
+      if (tel.value == "") {
+        tel.style.borderColor = "#f55d5d"
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>
